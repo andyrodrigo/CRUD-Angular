@@ -17,6 +17,11 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Lista Usuario Único
+  getUser(id: string):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.apiUrl}/id/${id}`)
+  }
+
   //CRUD
   //Create
   postUsers(user: User):Observable<User>{
@@ -26,7 +31,10 @@ export class UserService {
   getUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl);
   }
-  //U
+  //Update
+  updateUser(id: string, user: User): Observable<User>{
+    return this.httpClient.put<User>(`${this.apiUrl}/id/${id}`, user, this.httpOptions)
+  }
   //Delete
   deleteUsers(id: number):Observable<User>{
     return this.httpClient.delete<User>(`${this.apiUrl}/id/${id}`);
