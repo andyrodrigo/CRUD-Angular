@@ -24,7 +24,6 @@ export class UserService {
     return this.httpClient.get<User[]>(`${this.apiUrl}/id/${id}`, this.httpOptions)
   }
   
-
   //CRUD
   //Create
   postUsers(user: User):Observable<User>{
