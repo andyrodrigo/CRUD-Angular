@@ -8,7 +8,9 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  apiUrl = 'https://sheet.best/api/sheets/17d78082-e1e2-4ed0-9c2f-2519bb2962f2'
+  //apiUrl = 'https://sheet.best/api/sheets/17d78082-e1e2-4ed0-9c2f-2519bb2962f2'
+  apiUrl = 'https://script.googleusercontent.com/macros/echo?user_content_key=PR7BrarGkT1F2442MhtR_iatxlQ74AwirFr5Ul0AtfW0aeTRhJflYIKhmVzrbC7vMJJRCY_RmKCPyaVMD8jru-mCAVtMtz6em5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnHFtpZpv29szLZ_6L0-Q3mIaTjPVBgPEr9uSL0cQ9FtVAmY2FHapwy8nOFpDL6kfaA&lib=M7Lj635VzdETJWLsnvGpOACWuNoO_zmQc'
+  //apiUrl = '/macros/echo?user_content_key=PR7BrarGkT1F2442MhtR_iatxlQ74AwirFr5Ul0AtfW0aeTRhJflYIKhmVzrbC7vMJJRCY_RmKCPyaVMD8jru-mCAVtMtz6em5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnHFtpZpv29szLZ_6L0-Q3mIaTjPVBgPEr9uSL0cQ9FtVAmY2FHapwy8nOFpDL6kfaA&lib=M7Lj635VzdETJWLsnvGpOACWuNoO_zmQc'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -19,8 +21,9 @@ export class UserService {
 
   //Lista Usuario Único
   getUser(id: string):Observable<User[]>{
-    return this.httpClient.get<User[]>(`${this.apiUrl}/id/${id}`)
+    return this.httpClient.get<User[]>(`${this.apiUrl}/id/${id}`, this.httpOptions)
   }
+  
 
   //CRUD
   //Create
