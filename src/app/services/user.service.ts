@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  simulacaoBackup = true;
+  simulacaoBackend = true;
 
   apiUrl = 'https://sheet.best/api/sheets/17d78082-e1e2-4ed0-9c2f-2519bb2962f2';
 
@@ -29,16 +29,16 @@ export class UserService {
   //CRUD (Create, Read, Update and Delete)
   //Create
   postUser(user: User): Observable<User> {
-    if (this.simulacaoBackup) return of(this.post(user));
+    if (this.simulacaoBackend) return of(this.post(user));
     return this.httpClient.post<User>(this.apiUrl, user, this.httpOptions);
   }
   //Read
   getUsers(): Observable<User[]> {
-    if (this.simulacaoBackup) return of(this.usuarios);
+    if (this.simulacaoBackend) return of(this.usuarios);
     return this.httpClient.get<User[]>(this.apiUrl);
   }
   getUser(id: string): Observable<User> {
-    if (this.simulacaoBackup) return of(this.get(Number(id)));
+    if (this.simulacaoBackend) return of(this.get(Number(id)));
     return this.httpClient.get<User>(
       `${this.apiUrl}/id/${id}`,
       this.httpOptions
@@ -46,7 +46,7 @@ export class UserService {
   }
   //Update
   updateUser(id: string, user: User): Observable<User> {
-    if (this.simulacaoBackup) return of(this.update(Number(id), user));
+    if (this.simulacaoBackend) return of(this.update(Number(id), user));
     return this.httpClient.put<User>(
       `${this.apiUrl}/id/${id}`,
       user,
@@ -55,7 +55,7 @@ export class UserService {
   }
   //Delete
   deleteUsers(id: number): Observable<User> {
-    if (this.simulacaoBackup) return of(this.delete(id));
+    if (this.simulacaoBackend) return of(this.delete(id));
     return this.httpClient.delete<User>(`${this.apiUrl}/id/${id}`);
   }
 
